@@ -1,0 +1,11 @@
+@EndUserText.label: 'Inherit all the roles of the parent entity'
+@MappingRole: true
+define role ZDCL_ACCESS_INHERIT_ALL {
+    grant
+        select
+            on
+                ZCDS_VIEW_TOMANY_DCL_INHERIT
+                    where
+                        inheriting conditions from entity ZCDS_VIEW_TRAVEL_ASSOC_TOMANY;
+                        
+}

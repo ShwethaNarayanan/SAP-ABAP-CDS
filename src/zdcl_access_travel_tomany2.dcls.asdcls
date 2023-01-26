@@ -1,0 +1,14 @@
+@EndUserText.label: 'Second DCL'
+@MappingRole: true
+define role ZDCL_ACCESS_TRAVEL_TOMANY2 {
+    grant
+        select
+            on
+                ZCDS_VIEW_TRAVEL_ASSOC_TOMANY
+//                redefinition
+// redefinition will this implementation active and the previous implementations will
+// be inactive
+                    where
+                        customer_id = 000594;
+                        
+}

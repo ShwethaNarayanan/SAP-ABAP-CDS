@@ -1,0 +1,31 @@
+@EndUserText.label: 'Access Control for CDS with to many'
+@MappingRole: true
+define role ZDCL_ACCESS_TRAVEL_TOMANY {
+// Access rule - condition rule - adding conditions using WHERE 
+// Grant rule - Full Access without a where clause
+    grant
+        select
+            on
+                ZCDS_VIEW_TRAVEL_ASSOC_TOMANY
+                    where
+                        customer_id = 000072;
+// default condition mode - OR  . Same can be achieved by adding conditions to the first rule                
+     grant
+        select
+            on
+                ZCDS_VIEW_TRAVEL_ASSOC_TOMANY
+                    combination mode AND
+                     where
+                        travel_id = 00000239 or travel_id = 00000855;     
+                        
+// PFCG condition - Using Authorization object - SU21. 
+// Create an authorization class, then authorization object( ZCUSTID ) with the fields( ZCUSTID )
+// Assign the authorization object to a role ( T-code : PFCG)  
+//    grant
+//        select
+//            on
+//                ZCDS_VIEW_TRAVEL_ASSOC_TOMANY
+//                    where
+//                        ( customer_id ) = aspect pfcg_auth( ZCUSTID, ZCUSTID, ACTVT = '03' );
+               
+}

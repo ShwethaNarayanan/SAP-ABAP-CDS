@@ -1,0 +1,17 @@
+@EndUserText.label: 'Inherit the entire role of the parent entity'
+@MappingRole: true
+define role ZDCL_ACCESS_INHERIT_ROLE {
+// DCL is not inherited by default. This DCL inherits a particular role of the 
+// parent CDS entity
+    grant
+        select
+            on
+                ZCDS_VIEW_TOMANY_DCL_INHERIT
+                    where
+                        inherit ZDCL_ACCESS_TRAVEL_TOMANY 
+                            for grant 
+                              select
+                                on
+                                    ZCDS_VIEW_TRAVEL_ASSOC_TOMANY;
+                        
+}
